@@ -1,0 +1,94 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.disenchanting_table",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "MainBody",
+					"pivot": [0, 5, 0],
+					"cubes": [
+						{"origin": [-8, 0, -8], "size": [16, 10, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "Book",
+					"pivot": [0, 10, 0]
+				},
+				{
+					"name": "RightSide",
+					"parent": "Book",
+					"pivot": [0, 14, 0]
+				},
+				{
+					"name": "RightCover",
+					"parent": "RightSide",
+					"pivot": [0, 10, 0],
+					"cubes": [
+						{"origin": [-7, 14.1, -5], "size": [7, 0, 10], "uv": [14, 26]}
+					]
+				},
+				{
+					"name": "RightPages",
+					"parent": "RightSide",
+					"pivot": [0, 10, 0],
+					"cubes": [
+						{"origin": [-6, 13, -4], "size": [6, 1, 8], "uv": [0, 36]}
+					]
+				},
+				{
+					"name": "Page1",
+					"parent": "RightSide",
+					"pivot": [0, 13, 0],
+					"cubes": [
+						{"origin": [-6, 13, -4], "size": [6, 0, 8], "uv": [32, 37]}
+					]
+				},
+				{
+					"name": "Page2",
+					"parent": "RightSide",
+					"pivot": [0, 13, 0],
+					"cubes": [
+						{"origin": [-6, 13, -4], "size": [6, 0, 8], "uv": [20, 37]}
+					]
+				},
+				{
+					"name": "LeftSide",
+					"parent": "Book",
+					"pivot": [0, 14, 0]
+				},
+				{
+					"name": "LeftCover",
+					"parent": "LeftSide",
+					"pivot": [0, 10, 0],
+					"cubes": [
+						{"origin": [0, 14.1, -5], "size": [7, 0, 10], "uv": [0, 26]}
+					]
+				},
+				{
+					"name": "LeftPages",
+					"parent": "LeftSide",
+					"pivot": [0, 10, 0],
+					"cubes": [
+						{"origin": [0, 13, -4], "size": [6, 1, 8], "uv": [30, 28]}
+					]
+				},
+				{
+					"name": "Spine",
+					"parent": "Book",
+					"pivot": [0, 10, 0],
+					"cubes": [
+						{"origin": [-1, 14.2, -5], "size": [2, 0, 10], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

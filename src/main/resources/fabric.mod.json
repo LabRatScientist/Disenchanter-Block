@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "disenchanter_block",
+  "version": "${version}",
+
+  "name": "Disenchanter Block",
+  "description": "This mod adds a Disenchanter Block",
+  "authors": [
+    "Plaban Kumar Mondal"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": ""
+  },
+
+  "license": "MIT",
+  "icon": "assets/disenchanter_block/icon.jpg",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.github.plabankumarmondal.disenchanter.Disenchanter"
+    ],
+    "client": [
+      "com.github.plabankumarmondal.disenchanter.client.DisenchanterClient"
+    ]
+  },
+  "mixins": [
+    "disenchanter_block.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
