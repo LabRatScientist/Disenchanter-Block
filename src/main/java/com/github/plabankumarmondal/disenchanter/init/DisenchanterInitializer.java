@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
+import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
@@ -20,7 +21,7 @@ import net.minecraft.util.registry.Registry;
 
 public class DisenchanterInitializer {
 
-  public static final Block DISENCHANTER_BLOCK = new DisenchanterBlock(FabricBlockSettings.of(Material.STONE).requiresTool().strength(5.0F, 1200.0F));
+  public static final Block DISENCHANTER_BLOCK = new DisenchanterBlock(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES).requiresTool().strength(2.0F, 1200.0F));
   public static final BlockItem DISENCHANTER_BLOCK_ITEM = new BlockItem(DISENCHANTER_BLOCK, new FabricItemSettings().group(ItemGroup.DECORATIONS));
   public static BlockEntityType<DisenchanterBlockEntity> DISENCHANTER_BLOCK_ENTITY;
   public static ScreenHandlerType SCREEN_HANDLER_TYPE;
