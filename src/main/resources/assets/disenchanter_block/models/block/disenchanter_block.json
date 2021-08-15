@@ -1,7 +1,8 @@
 {
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "disenchanter_block:block/disenchanter_block"
+		"0": "disenchanter_block:block/disenchanter_block",
+		"particle": "minecraft:block/crying_obsidian"
 	},
 	"elements": [
 		{
