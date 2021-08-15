@@ -36,9 +36,13 @@ public class DisenchanterBlock extends BlockWithEntity implements BlockEntityPro
 
   @Nullable
   @Override
-  public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-    return new DisenchanterBlockEntity(pos, state);
+  public BlockEntity createBlockEntity(BlockView world) {
+    return new DisenchanterBlockEntity();
   }
+
+//  public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+//    return new DisenchanterBlockEntity(pos, state);
+//  }
 
   @Override
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
