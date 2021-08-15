@@ -32,7 +32,7 @@ public class BlockInventoryScreen extends SyncedGuiDescription {
     WButton button =  new WButton(new LiteralText("shift").fillStyle(STYLE));
 
     itemSlot1.setFilter(stack -> stack.isDamageable() || stack.hasEnchantments() );
-    itemSlot2.setFilter(stack -> stack.getItem() == Items.BOOK);
+    itemSlot2.setFilter(stack -> stack.getItem() == Items.BOOK && stack.getCount() == 1);
 
     root.add(itemSlot1, 1,1);
     root.add(button, 3, 1, 3, 10);
