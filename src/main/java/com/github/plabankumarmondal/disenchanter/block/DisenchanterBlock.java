@@ -11,6 +11,8 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
@@ -30,6 +32,9 @@ public class DisenchanterBlock extends BlockWithEntity implements BlockEntityPro
   public static final Identifier ID = new Identifier(Disenchanter.MOD_ID, "disenchanter_block");
   public static Inventory blockEntityInventory;
 
+  private static World world2;
+  private static BlockPos pos2;
+
   public DisenchanterBlock(Settings settings) {
     super(settings);
   }
@@ -44,10 +49,11 @@ public class DisenchanterBlock extends BlockWithEntity implements BlockEntityPro
   public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
     if (world.isClient) return ActionResult.SUCCESS;
     blockEntityInventory = (Inventory) world.getBlockEntity(pos);
-
-
-
     player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
+
+    world2 = world;
+    pos2 = pos;
+
     return ActionResult.SUCCESS;
   }
 
@@ -67,6 +73,17 @@ public class DisenchanterBlock extends BlockWithEntity implements BlockEntityPro
       EnchantmentHelper.set(ImmutableMap.of(firstEnchantment, firstEnchantmentLvl), newEnchantedBook);
       DisenchanterBlock.blockEntityInventory.setStack(1, newEnchantedBook);
       DisenchanterBlock.blockEntityInventory.setStack(0, ItemStack.EMPTY);
+
+      if(!world2.isClient) {
+        world2.playSound(
+                null,
+                pos2,
+                SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE,
+                SoundCategory.BLOCKS,
+                1f,
+                1f
+        );
+      }
     }
   }
 

@@ -42,7 +42,7 @@ public class BlockInventoryScreen extends SyncedGuiDescription {
 
     root.validate(this);
 
-    button.setOnClick(() -> DisenchanterBlock.disenchant());
+    button.setOnClick(DisenchanterBlock::disenchant);
   }
 
 
