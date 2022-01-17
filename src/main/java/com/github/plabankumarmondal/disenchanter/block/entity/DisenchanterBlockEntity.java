@@ -5,6 +5,7 @@ import com.github.plabankumarmondal.disenchanter.init.DisenchanterInitializer;
 import com.github.plabankumarmondal.disenchanter.inventory.ImplementedInventory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
@@ -31,8 +32,8 @@ public class DisenchanterBlockEntity extends BlockEntity implements NamedScreenH
   private final AnimationFactory factory = new AnimationFactory(this);
   private final DefaultedList<ItemStack> items = DefaultedList.ofSize(2, ItemStack.EMPTY);
 
-  public DisenchanterBlockEntity( BlockPos pos, BlockState state) {
-    super(DisenchanterInitializer.DISENCHANTER_BLOCK_ENTITY , pos, state);
+  public DisenchanterBlockEntity() {
+    super(DisenchanterInitializer.DISENCHANTER_BLOCK_ENTITY);
   }
 
   @Override
@@ -40,16 +41,17 @@ public class DisenchanterBlockEntity extends BlockEntity implements NamedScreenH
     return items;
   }
 
+
   @Override
-  public void readNbt(NbtCompound nbt) {
-    super.readNbt(nbt);
-    Inventories.readNbt(nbt, items);
+  public void fromTag(BlockState state, NbtCompound tag) {
+    super.fromTag(state, tag);
+    Inventories.readNbt(tag, this.items);
   }
 
   @Override
-  public NbtCompound writeNbt(NbtCompound nbt) {
+  public void writeNbt(NbtCompound nbt) {
+    super.writeNbt(nbt);
     Inventories.writeNbt(nbt, items);
-    return super.writeNbt(nbt);
   }
 
   @Override

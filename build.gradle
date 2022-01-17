@@ -1,21 +1,21 @@
 plugins {
-	id 'fabric-loom' version '0.8-SNAPSHOT'
+	id 'fabric-loom' version '0.10-SNAPSHOT'
 	id 'maven-publish'
 }
 
-sourceCompatibility = JavaVersion.VERSION_16
-targetCompatibility = JavaVersion.VERSION_16
+<<<<<<< Updated upstream
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+=======
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+>>>>>>> Stashed changes
 
 archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
 	maven {
 		name = "CottonMC"
 		url = "https://server.bbkr.space/artifactory/libs-release"
@@ -32,11 +32,16 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
+<<<<<<< Updated upstream
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
 
-	modImplementation include("io.github.cottonmc:LibGui:4.1.5+1.17.1")
-	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.17:3.0.11:dev'
+	modImplementation include("io.github.cottonmc:LibGui:3.4.0+1.16.5")
+	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.16.5:3.0.46:dev'
+=======
+	modImplementation include("io.github.cottonmc:LibGui:5.2.0+1.18")
+	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.18:3.0.25'
+>>>>>>> Stashed changes
 }
 
 processResources {
@@ -48,14 +53,22 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
+<<<<<<< Updated upstream
 	// ensure that the encoding is set to UTF-8, no matter what the system default is
 	// this fixes some edge cases with special characters not displaying correctly
 	// see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
 	// If Javadoc is generated, this must be specified in that task too.
 	it.options.encoding = "UTF-8"
 
-	// Minecraft 1.17 (21w19a) upwards uses Java 16.
-	it.options.release = 16
+	//Minecraft 1.16.5 uses JAVA 8
+	def targetVersion = 8
+	if (JavaVersion.current().isJava9Compatible()) {
+		it.options.release = targetVersion
+	}
+=======
+	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
+	it.options.release = 17
+>>>>>>> Stashed changes
 }
 
 java {
@@ -75,13 +88,7 @@ jar {
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
-			// add all the jars that should be included when publishing to maven
-			artifact(remapJar) {
-				builtBy remapJar
-			}
-			artifact(sourcesJar) {
-				builtBy remapSourcesJar
-			}
+			from components.java
 		}
 	}
 

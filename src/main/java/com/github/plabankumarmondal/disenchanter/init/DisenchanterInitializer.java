@@ -6,7 +6,6 @@ import com.github.plabankumarmondal.disenchanter.block.entity.DisenchanterBlockE
 import com.github.plabankumarmondal.disenchanter.gui.BlockInventoryScreen;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
@@ -27,7 +26,7 @@ public class DisenchanterInitializer {
   public static ScreenHandlerType SCREEN_HANDLER_TYPE;
 
   static {
-    DISENCHANTER_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "disenchanter_block:disenchanter_block_entity", FabricBlockEntityTypeBuilder.create(DisenchanterBlockEntity::new, DISENCHANTER_BLOCK).build(null));
+    DISENCHANTER_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "disenchanter_block:disenchanter_block_entity", BlockEntityType.Builder.create(DisenchanterBlockEntity::new, DISENCHANTER_BLOCK).build(null));
     SCREEN_HANDLER_TYPE = ScreenHandlerRegistry.registerSimple(DisenchanterBlock.ID, (syncId, inventory) -> new BlockInventoryScreen(syncId, inventory, ScreenHandlerContext.EMPTY));
   }
 
