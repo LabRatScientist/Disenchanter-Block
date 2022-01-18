@@ -32,8 +32,8 @@ public class DisenchanterBlockEntity extends BlockEntity implements NamedScreenH
   private final AnimationFactory factory = new AnimationFactory(this);
   private final DefaultedList<ItemStack> items = DefaultedList.ofSize(2, ItemStack.EMPTY);
 
-  public DisenchanterBlockEntity() {
-    super(DisenchanterInitializer.DISENCHANTER_BLOCK_ENTITY);
+  public DisenchanterBlockEntity( BlockPos pos, BlockState state) {
+    super(DisenchanterInitializer.DISENCHANTER_BLOCK_ENTITY , pos, state);
   }
 
   @Override
@@ -41,11 +41,10 @@ public class DisenchanterBlockEntity extends BlockEntity implements NamedScreenH
     return items;
   }
 
-
   @Override
-  public void fromTag(BlockState state, NbtCompound tag) {
-    super.fromTag(state, tag);
-    Inventories.readNbt(tag, this.items);
+  public void readNbt(NbtCompound nbt) {
+    super.readNbt(nbt);
+    Inventories.readNbt(nbt, items);
   }
 
   @Override
